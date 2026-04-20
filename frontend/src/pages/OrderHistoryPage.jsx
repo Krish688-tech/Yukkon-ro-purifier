@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { API_URL } from "../data/api";
 import { AuthContext } from "../context/AuthContext";
 import { motion } from "framer-motion";
 
@@ -10,7 +11,7 @@ const OrderHistoryPage = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/orders/${user?._id}`);
+        const res = await fetch(`${API_URL}/api/orders/${user?._id}`);
         const data = await res.json();
         setOrders(data);
       } catch (err) {

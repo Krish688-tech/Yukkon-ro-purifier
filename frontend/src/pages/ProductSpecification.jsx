@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, useRef } from "react";
+import { API_URL } from "../data/api.js";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
@@ -152,7 +153,7 @@ const ProductSpecification = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/reviews", {
+      const res = await fetch(`${API_URL}/api/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -187,7 +188,7 @@ const ProductSpecification = () => {
   useEffect(() => {
     if (!product?.id) return; // ✅ prevent invalid call
 
-    fetch(`http://localhost:5000/api/reviews/${product.id}`)
+    fetch(`${API_URL}/api/reviews/${product.id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();

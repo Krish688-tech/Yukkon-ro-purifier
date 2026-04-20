@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+import { API_URL } from "../../data/api";
 import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 
@@ -27,7 +28,7 @@ const fetchData = async () => {
   }
 
   try {
-    const res = await fetch("http://localhost:5000/api/enquiry/all", {
+    const res = await fetch(`${API_URL}/api/enquiry/all`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -102,7 +103,7 @@ const fetchData = async () => {
   const updateStatus = async (id, status) => {
     const token = localStorage.getItem("token");
 
-    const res = await fetch(`http://localhost:5000/api/enquiry/${id}/status`, {
+    const res = await fetch(`${API_URL}/api/enquiry/${id}/status`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -127,7 +128,7 @@ const fetchData = async () => {
   const handleDelete = async (id) => {
     const token = localStorage.getItem("token");
 
-    const res = await fetch(`http://localhost:5000/api/enquiry/${id}`, {
+    const res = await fetch(`${API_URL}/api/enquiry/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -196,20 +197,20 @@ const fetchData = async () => {
         <div className="flex gap-3">
           <button
             onClick={() => navigate("/admin/orders")}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-purple-600 text-white px-4 py-2 rounded"
           >
             Orders 📦
           </button>
           <button
             onClick={exportToExcel}
-            className="bg-linear-to-r from-green-500 to-green-600 hover:scale-105 transition text-white px-4 py-2 rounded-xl shadow-md"
+            className="bg-linear-to-r from-green-300 to-green-500 hover:scale-105 transition text-white px-4 py-2 rounded-xl shadow-md"
           >
             Export 📥
           </button>
 
           <button
             onClick={handleLogout}
-            className="bg-linear-to-r from-red-500 to-red-600 hover:scale-105 transition text-white px-4 py-2 rounded-xl shadow-md"
+            className="bg-linear-to-r from-red-400 to-red-500 hover:scale-105 transition text-white px-4 py-2 rounded-xl shadow-md"
           >
             Logout 🚪
           </button>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../../data/api";
 import { useNavigate } from "react-router-dom";
+import * as XLSX from "xlsx";
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -37,7 +39,7 @@ const AdminOrders = () => {
       setLoading(true);
 
       const res = await fetch(
-        `http://localhost:5000/api/admin/orders?page=${pageNumber}&search=${encodeURIComponent(search)}`,
+        `${API_URL}/api/admin/orders?page=${pageNumber}&search=${encodeURIComponent(search)}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -82,7 +84,7 @@ const AdminOrders = () => {
   const updateStatus = async (id) => {
     try {
       const res = await fetch(
-        `http://localhost:5000/api/orders/update-order-status/${id}`,
+        `${API_URL}/api/orders/update-order-status/${id}`,
         {
           method: "PUT",
           headers: {
@@ -117,11 +119,40 @@ const AdminOrders = () => {
     );
   };
 
+   // 📊 Export XLSX
+    const exportToExcel = () => {
+      const data = filtered.map((e) => ({
+        Name: e.name,
+        Email: e.email,
+        WhatsApp: e.whatsapp,
+        Product: e.productName,
+        Message: e.message,
+        Status: e.status,
+        Date: new Date(e.createdAt).toLocaleString(),
+      }));
+  
+      const ws = XLSX.utils.json_to_sheet(data);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Enquiries");
+  
+      XLSX.writeFile(wb, "enquiries.xlsx");
+    };
+
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       {/* HEADER */}
-      <h1 className="text-3xl font-bold mb-6">Orders Dashboard 📦</h1>
-
+      <div className="flex justify-between items-center mb-6 sticky top-0 bg-gray-50 z-10 py-3">
+        <div>
+            <h1 className="text-3xl font-bold mb-6">Orders Dashboard 📦</h1>
+        </div>
+        <button
+            onClick={exportToExcel}
+            className="bg-linear-to-r from-green-300 to-green-500 hover:scale-105 transition text-white px-4 py-2 rounded-xl shadow-md"
+          >
+            Export 📥
+          </button>
+      </div>  
       <input
         type="text"
         placeholder="Search by Order ID, Name, Phone..."

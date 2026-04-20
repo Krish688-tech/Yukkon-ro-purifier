@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { API_URL } from "../data/api";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -18,7 +19,7 @@ const Register = () => {
     const res = await registerUser(form.name, form.email, form.password);
 
     if (res.success) {
-      navigate("/"); // 👉 go to home
+      navigate("/"); // go to home
     } else {
       alert(res.msg);
     }
@@ -78,7 +79,7 @@ const Register = () => {
             {/* BUTTON */}
             <button
               type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold shadow-md transition"
+              className="bg-linear-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-purple-600 text-white py-3 rounded-lg font-semibold shadow-md transition"
             >
               Register
             </button>
@@ -94,7 +95,7 @@ const Register = () => {
           {/* GOOGLE */}
           <button
             onClick={() =>
-              (window.location.href = "http://localhost:5000/api/auth/google")
+              (window.location.href = `${API_URL}/api/auth/google`)
             }
             className="w-full border cursor-pointer border-gray-200 py-3 rounded-lg hover:bg-purple-200 transition"
           >

@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
+import { API_URL } from "../data/api";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
 
 const ProfilePage = () => {
+  
   const { user, setUser, getToken } = useContext(AuthContext);
-
   const [form, setForm] = useState({
     name: user?.name || "",
     email: user?.email || "",
@@ -52,9 +53,7 @@ const ProfilePage = () => {
         formData.append("avatar", form.avatarFile);
       }
 
-      const res = await fetch(
-        "http://localhost:5000/api/users/update-profile",
-        {
+      const res = await fetch(`${API_URL}/api/users/update-profile`, {
           method: "PUT",
           headers: {
             Authorization: `Bearer ${token}`, // 🔐 secure

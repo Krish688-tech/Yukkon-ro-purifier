@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { API_URL } from "../../data/api";
 
 export const AuthContext = createContext();
 
@@ -32,7 +33,7 @@ export const AuthProvider = ({ children }) => {
   // ✅ LOGIN
 const loginUser = async (email, password, navigate) => {
   try {
-    const res = await fetch("http://localhost:5000/api/auth/login", {
+    const res = await fetch(`${API_URL}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +82,7 @@ const loginUser = async (email, password, navigate) => {
   // ✅ REGISTER
   const registerUser = async (name, email, password) => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch(`${API_URL}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -105,7 +106,7 @@ const loginUser = async (email, password, navigate) => {
   // ✅ GOOGLE LOGIN
   const getUser = async (token) => {
     try {
-      const res = await fetch("http://localhost:5000/api/auth/me", {
+      const res = await fetch(`${API_URL}/api/auth/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

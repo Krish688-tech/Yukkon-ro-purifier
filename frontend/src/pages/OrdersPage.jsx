@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { API_URL } from "../data/api";
 import { AuthContext } from "../context/AuthContext";
 
 const OrdersPage = () => {
@@ -7,7 +8,7 @@ const OrdersPage = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const res = await fetch("http://localhost:5000/api/orders", {
+      const res = await fetch(`${API_URL}/api/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { API_URL } from "../data/api";
 import products from "../data/products";
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
@@ -55,7 +56,7 @@ const ProductReviewPage = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/reviews", {
+      const res = await fetch(`${API_URL}/api/reviews`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

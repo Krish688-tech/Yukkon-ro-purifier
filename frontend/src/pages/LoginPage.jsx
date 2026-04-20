@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { API_URL } from "../data/api";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
@@ -128,7 +129,7 @@ const Login = () => {
           {/* GOOGLE */}
           <button
             onClick={() =>
-              (window.location.href = "http://localhost:5000/api/auth/google")
+              (window.location.href = `${API_URL}/api/auth/google`)
             }
             className="w-full border cursor-pointer border-gray-300 py-3 rounded-lg hover:bg-purple-200 transition"
           >

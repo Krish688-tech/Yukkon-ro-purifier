@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { API_URL } from "../data/api";
 import { useNavigate } from "react-router-dom";
 import products from "../data/products";
 import { getProductUrl } from "../utils/routes";
@@ -8,14 +9,14 @@ const TopSelling = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/api/orders/top-products")
+    fetch(`${API_URL}/api/orders/top-products`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length === 0) {
-          // 👉 fallback dummy
+          //  fallback dummy
           setTopProducts(products.sort(() => 0.5 - Math.random()).slice(0, 3));
         } else {
-          // 👉 merge backend + local products
+          // merge backend + local products
           const merged = data.map((tp) => {
             const full = products.find((p) => p.id == tp._id);
             return {

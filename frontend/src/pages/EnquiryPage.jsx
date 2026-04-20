@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { API_URL } from "../data/api";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import Swal from "sweetalert2";
@@ -54,7 +55,7 @@ const EnquiryPage = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/enquiry/submit", {
+      const res = await fetch(`${API_URL}/api/enquiry/submit`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

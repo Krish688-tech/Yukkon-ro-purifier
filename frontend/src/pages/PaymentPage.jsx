@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from "react";
+import { API_URL } from "../data/api";
 import { AuthContext } from "../context/AuthContext";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
@@ -65,7 +66,7 @@ const PaymentPage = () => {
     try {
       setLoading(true);
 
-      const res = await fetch("http://localhost:5000/api/create-order", {
+      const res = await fetch(`${API_URL}/api/create-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: finalTotal }),
@@ -83,7 +84,7 @@ const PaymentPage = () => {
 
         handler: async function (response) {
           // UPDATE USER (save address)
-          const res = await fetch("http://localhost:5000/api/users/update-profile", {
+          const res = await fetch(`${API_URL}/api/users/update-profile`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -107,7 +108,7 @@ const PaymentPage = () => {
           localStorage.setItem("user", JSON.stringify(updatedUser));
 
           // CONTINUE PAYMENT VERIFY
-          await fetch("http://localhost:5000/api/payment/verify-payment", {
+          await fetch(`${API_URL}/api/payment/verify-payment`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

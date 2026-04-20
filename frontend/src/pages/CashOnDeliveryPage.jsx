@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect } from "react";
+import { API_URL } from "../data/api";
 import { AuthContext } from "../context/AuthContext";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
@@ -76,9 +77,7 @@ const CashOnDeliveryPage = () => {
       setLoading(true);
 
       //  1. SAVE ADDRESS FIRST
-      const updateRes = await fetch(
-        "http://localhost:5000/api/users/update-profile",
-        {
+      const updateRes = await fetch(`${API_URL}/api/users/update-profile`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -101,7 +100,7 @@ const CashOnDeliveryPage = () => {
       localStorage.setItem("user", JSON.stringify(updatedUser));
 
       // 3. PLACE ORDER
-      const res = await fetch("http://localhost:5000/api/orders/cod-order", {
+      const res = await fetch(`${API_URL}/api/orders/cod-order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
