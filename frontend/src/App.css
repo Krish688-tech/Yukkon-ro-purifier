@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* GLOBAL RESET */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9fafb;
+}
+
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
+
+/* DROPDOWN ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+/* HERO IMAGE HOVER */
+.hero-img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* PRODUCT CARD HOVER */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* BUTTON EFFECT */
+.btn-primary {
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+/* MOBILE MENU ANIMATION */
+.mobile-menu {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* SCROLLBAR (MODERN LOOK) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1d4ed8;
+}
+
+/* NAVBAR SHADOW SMOOTH */
+.navbar-shadow {
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar-shadow:hover {
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+/*payment page */
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  margin-top: 4px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+/* 🔥 PREMIUM GLASS ARROWS */
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.12);
+  color: #2563eb;
+
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+/* 💎 HOVER EFFECT */
+.custom-arrow:hover {
+  background: #2563eb;
+  color: white;
+  transform: translateY(-50%) scale(1.15);
+
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.6);
+}
+
+/* ✨ CLICK FEEDBACK */
+.custom-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* 📍 POSITIONING */
+.custom-arrow.left-2 {
+  left: 10px;
+}
+
+.custom-arrow.right-2 {
+  right: 10px;
+}
+
+/* DOT CONTAINER SPACE */ .swiper-pagination { margin-top: 20px !important; position: relative; } /* DOT STYLE */ .swiper-pagination-bullet { background: #ccc; opacity: 1; width: 8px; height: 8px; transition: all 0.3s ease; }
+
+.swiper-pagination-bullet-active { background: #de25eb; width: 20px; border-radius: 10px; }
