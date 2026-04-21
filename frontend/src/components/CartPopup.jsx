@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const CartPopup = ({ onClose }) => {
+  const navigate = useNavigate();
   const { cart, updateQty, removeFromCart, total } = useContext(CartContext);
 
   return (
@@ -95,7 +97,7 @@ const CartPopup = ({ onClose }) => {
               <button
                 onClick={() => {
                   onClose();
-                  window.location.href = "/checkout";
+                  navigate("/checkout");
                 }}
                 className="w-1/2 py-3 rounded-xl bg-linear-to-r from-purple-500 to-indigo-600 text-white font-semibold hover:opacity-90 transition shadow-md"
               >
