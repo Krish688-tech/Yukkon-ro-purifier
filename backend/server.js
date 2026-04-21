@@ -24,7 +24,7 @@ const app = express();
 // ================= MIDDLEWARES =================
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://your-frontend.vercel.app",
+  "https://yukkon-ro-purifier-ra2r.vercel.app/",
 ];
 
 app.use(
