@@ -1,3 +1,5 @@
+import roWater from "../assets/ro-water.png";
+
 const Hero = () => {
   return (
     <section className="relative overflow-hidden flex flex-col md:flex-row items-center justify-between px-6 md:px-16 pt-24 pb-10 md:py-20 min-h-[70vh] md:min-h-[90vh] bg-linear-to-br from-purple-50 via-white to-blue-50">
@@ -38,7 +40,7 @@ const Hero = () => {
       {/* IMAGE */}
       <div className="md:w-1/2 mt-8 md:mt-0 flex justify-center relative z-10">
         <img
-          src="src/assets/ro-water.png"
+          src={roWater}
           alt="ro-purifier"
           className="w-full max-w-162.5 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
         />
