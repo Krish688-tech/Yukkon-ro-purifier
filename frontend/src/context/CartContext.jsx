@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext, useMemo } from "react";
-import { API_URL } from "../../data/api";
+import { API_URL } from "../data/api";
 import { AuthContext } from "./AuthContext";
 
 export const CartContext = createContext();
