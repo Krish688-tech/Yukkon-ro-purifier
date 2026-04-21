@@ -9,13 +9,7 @@ import ProductSpecification from "./pages/ProductSpecification";
 import OrderHistoryPage from "./pages/OrderHistoryPage.jsx";
 import UpdateProfilePage from "./pages/UpdateProfilePage.jsx";
 import Layout from "./components/Layout";
-import ROPage from "./pages/ROPage";
-import UVPage from "./pages/UVPage";
-import SaltbasedPage from "./pages/SaltbasedPage.jsx";
-import MixerPage from "./pages/MixerPage.jsx";
-import AirHepaPage from "./pages/HepaAirPage.jsx";
 import CategoryPage from "./pages/wideproductpages/CategoryPage";
-import AutomaticController from "./pages/AutomaticController.jsx";
 import AboutUs from "./pages/footer/AboutUs.jsx";
 import ContactUs from "./pages/footer/ContactUs.jsx";
 import PrivacyPolicy from "./pages/footer/PrivacyPolicy";
@@ -48,16 +42,6 @@ function App() {
           <Route path="payment" element={<PaymentPage />} />
           <Route path="orders" element={<OrderHistoryPage />} />
           <Route path="profile" element={<UpdateProfilePage />} />
-
-          <Route path="/ro" element={<ROPage />} />
-          <Route path="/uv" element={<UVPage />} />
-          <Route path="/salt-based" element={<SaltbasedPage />} />
-          <Route path="/mixer" element={<MixerPage />} />
-          <Route
-            path="/automaticcontroller"
-            element={<AutomaticController />}
-          />
-          <Route path="/hepa" element={<AirHepaPage />} />
           <Route path="products/:category" element={<CategoryPage />} />
 
           <Route path="about" element={<AboutUs />} />
