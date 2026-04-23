@@ -29,7 +29,7 @@ router.get(
     );
 
     // redirect to frontend
-    res.redirect(`http://localhost:5173/google-success?token=${token}`);
+    res.redirect(`https://yukkon-ro-purifier-ra2r.vercel.app/google-success?token=${token}`);
   }
 );
 
